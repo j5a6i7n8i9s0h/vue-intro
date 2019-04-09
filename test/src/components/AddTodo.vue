@@ -12,14 +12,19 @@
         >
           Add Todo
         </v-card-title>
-
-        <v-card-text>
-        <input type="text" name="title" v-model="title" placeholder="Add Todo.."/>
-        
+        <span class="text">
+        <v-card-text >
+          Enter title of Todo to create
         </v-card-text>
-        <v-card-action>
-        <v-btn color="blue lighten-2" dark @click="addTodo">Create</v-btn>
-        </v-card-action>
+        </span>
+        <v-card-actions>
+        <v-text-field
+              label="Title"
+              v-model='title'
+              required
+            ></v-text-field>
+        <v-btn flat color="blue lighten-2" class="button" dark @click="addTodo">Create</v-btn>
+        </v-card-actions>
         </v-card>
         </v-dialog>
     </div>
@@ -35,6 +40,7 @@ export default {
   },
   methods: {
     addTodo(e) {
+      if (e === "") return;
       e.preventDefault();
       const newTodo = {
         title: this.title,
@@ -49,14 +55,7 @@ export default {
 </script>
 
 <style scoped>
-form {
-  display: flex;
-}
-input[type="text"] {
-  flex: 10;
-  padding: 5px;
-}
-input[type="submit"] {
-  flex: 2;
+text {
+  float: left;
 }
 </style>
