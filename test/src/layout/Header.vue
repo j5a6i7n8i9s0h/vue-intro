@@ -1,15 +1,9 @@
 <template lang="">
-  <v-toolbar  color="primary">
+  <v-toolbar  fixed color="primary">
     <v-toolbar-side-icon><v-icon>list</v-icon></v-toolbar-side-icon>
     <v-toolbar-title class="dark--text">Todo List</v-toolbar-title>
 
-    <v-spacer></v-spacer>
-
-    <v-btn icon @click="$emit('triggerModal')">
-      <v-icon>add</v-icon>
-    </v-btn>
-
-    
+    <v-spacer></v-spacer>    
   </v-toolbar>
 </template>
 

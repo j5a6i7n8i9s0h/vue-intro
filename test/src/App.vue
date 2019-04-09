@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <Header v-on:triggerModal='triggerModal'/>
-    <AddTodo v-bind:show='showModal' v-on:add-todo="addTodo"/>
+    <AddTodo v-bind:show='showModal' v-on:add-todo="addTodo" v-on:triggerModal='triggerModal'/>
     <Todos v-bind:todos='todos' v-on:del-todo="delTodo"/>
+    <BottomNav v-on:triggerModal='triggerModal'/>
   </div>
 </template>
 
@@ -10,12 +11,14 @@
 import Todos from "./components/Todos.vue";
 import Header from "./layout/Header.vue";
 import AddTodo from "./components/AddTodo.vue";
+import BottomNav from "./components/BottomNav.vue";
 export default {
   name: "app",
   components: {
     Todos,
     Header,
-    AddTodo
+    AddTodo,
+    BottomNav
   },
   methods: {
     delTodo(id) {
@@ -39,7 +42,6 @@ export default {
         });
     },
     triggerModal() {
-      console.log("ss");
       this.showModal = !this.showModal;
     }
   },
@@ -50,7 +52,7 @@ export default {
     };
   },
   created() {
-    fetch("https://jsonplaceholder.typicode.com/todos?_limit=5", {
+    fetch("https://jsonplaceholder.typicode.com/todos?_limit=25", {
       method: "GET"
     })
       .then(res => res.json())
@@ -60,25 +62,8 @@ export default {
 </script>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 body {
   line-height: 1.4;
   font-family: Arial, Helvetica, sans-serif;
-}
-
-.btn {
-  display: inline-block;
-  border: none;
-  background: #555;
-  color: #fff;
-  padding: 7px 20px;
-  cursor: pointer;
-}
-.btn:hover {
-  background: #666;
 }
 </style>
